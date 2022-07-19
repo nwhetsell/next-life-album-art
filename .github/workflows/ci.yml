@@ -1,0 +1,34 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  CI:
+    runs-on: macos-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v2
+
+    - name: Install TeX Live
+      run: |
+        curl --location --remote-name --show-error --silent http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+        tar -xf install-tl-unx.tar.gz
+        cd install-tl-20*
+        echo -e 'selected_scheme scheme-basic\nTEXDIR /usr/local/texlive\noption_doc 0\noption_src 0' > texlive.profile
+        sudo ./install-tl -no-gui -profile=texlive.profile
+        echo /usr/local/texlive/bin/universal-darwin >> $GITHUB_PATH
+
+    - name: Install TeX packages
+      run: >
+        sudo tlmgr install
+        pgfplots
+        standalone
+
+    - name: Create album art
+      run: ./create
+
+    - name: Archive album art
+      uses: actions/upload-artifact@main
+      with:
+        name: Next Life
+        path: Next Life.png

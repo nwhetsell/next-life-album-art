@@ -1,0 +1,3 @@
+moebius-strip.*
+!moebius-strip.tex
+*.png

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+set -e
+
+pdflatex -interaction=errorstopmode moebius-strip.tex
+
+convert -density 1200 moebius-strip.pdf moebius-strip.png
+
+convert moebius-strip.png \
+  -background 'gray(50%)' \
+  -gravity Center -extent 3000x3000 \
+  'Next Life.png'
+
+convert 'Next Life.png' \
+  -vignette 0x1000-20-20% \
+  'Next Life.png'
