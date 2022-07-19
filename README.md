@@ -1,4 +1,4 @@
-# “How” Album Art
+# “The Next Life” Album Art
 
 This is a collection of scripts for creating the album art for “The Next Life”
 using [PGFPlots](https://ctan.org/pkg/pgfplots) and [ImageMagick](https://imagemagick.org).
