@@ -23,6 +23,7 @@ jobs:
         sudo tlmgr install
         pgfplots
         standalone
+        xkeyval
 
     - name: Create album art
       run: ./create
