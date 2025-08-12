@@ -25,6 +25,9 @@ jobs:
         standalone
         xkeyval
 
+    - name: Install dependencies
+      run: brew install imagemagick
+
     - name: Create album art
       run: ./create
 
