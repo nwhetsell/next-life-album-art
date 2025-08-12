@@ -26,7 +26,7 @@ jobs:
         xkeyval
 
     - name: Install dependencies
-      run: brew install imagemagick
+      run: brew install ghostscript imagemagick
 
     - name: Create album art
       run: ./create
